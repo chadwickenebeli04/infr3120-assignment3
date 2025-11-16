@@ -1,0 +1,134 @@
+<!-- views/tasks/edit.ejs -->
+<!-- Edit Task Page - UPDATE operation -->
+
+<%- include('../partials/header') %>
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="mb-4">
+                <h1 class="display-6 fw-bold">
+                    <i class="fas fa-edit me-2 text-primary"></i>Edit Task
+                </h1>
+                <p class="text-muted">Update the task details below</p>
+            </div>
+            
+            <div class="card shadow-sm border-0">
+                <div class="card-body p-4">
+                    <form action="/tasks/edit/<%= task._id %>" method="POST">
+                        
+                        <!-- Task Title -->
+                        <div class="mb-4">
+                            <label for="title" class="form-label fw-bold">
+                                Task Title <span class="text-danger">*</span>
+                            </label>
+                            <input 
+                                type="text" 
+                                class="form-control form-control-lg" 
+                                id="title" 
+                                name="title" 
+                                value="<%= task.title %>"
+                                required
+                                maxlength="100">
+                            <small class="text-muted">Give your task a clear, descriptive title</small>
+                        </div>
+                        
+                        <!-- Task Description -->
+                        <div class="mb-4">
+                            <label for="description" class="form-label fw-bold">
+                                Description
+                            </label>
+                            <textarea 
+                                class="form-control" 
+                                id="description" 
+                                name="description" 
+                                rows="4"
+                                maxlength="500"><%= task.description || '' %></textarea>
+                            <small class="text-muted">Optional: Provide additional details or notes</small>
+                        </div>
+                        
+                        <!-- Priority and Status Row -->
+                        <div class="row mb-4">
+                            <!-- Priority -->
+                            <div class="col-md-6 mb-3 mb-md-0">
+                                <label for="priority" class="form-label fw-bold">
+                                    Priority Level
+                                </label>
+                                <select class="form-select" id="priority" name="priority">
+                                    <option value="Low" <%= task.priority === 'Low' ? 'selected' : '' %>>
+                                        Low Priority
+                                    </option>
+                                    <option value="Medium" <%= task.priority === 'Medium' ? 'selected' : '' %>>
+                                        Medium Priority
+                                    </option>
+                                    <option value="High" <%= task.priority === 'High' ? 'selected' : '' %>>
+                                        High Priority
+                                    </option>
+                                </select>
+                                <small class="text-muted">How important is this task?</small>
+                            </div>
+                            
+                            <!-- Status -->
+                            <div class="col-md-6">
+                                <label for="status" class="form-label fw-bold">
+                                    Status
+                                </label>
+                                <select class="form-select" id="status" name="status">
+                                    <option value="To Do" <%= task.status === 'To Do' ? 'selected' : '' %>>
+                                        To Do
+                                    </option>
+                                    <option value="In Progress" <%= task.status === 'In Progress' ? 'selected' : '' %>>
+                                        In Progress
+                                    </option>
+                                    <option value="Completed" <%= task.status === 'Completed' ? 'selected' : '' %>>
+                                        Completed
+                                    </option>
+                                </select>
+                                <small class="text-muted">Current task status</small>
+                            </div>
+                        </div>
+                        
+                        <!-- Due Date -->
+                        <div class="mb-4">
+                            <label for="dueDate" class="form-label fw-bold">
+                                Due Date
+                            </label>
+                            <input 
+                                type="date" 
+                                class="form-control" 
+                                id="dueDate" 
+                                name="dueDate"
+                                value="<%= task.dueDate ? new Date(task.dueDate).toISOString().split('T')[0] : '' %>">
+                            <small class="text-muted">Optional: When should this task be completed?</small>
+                        </div>
+                        
+                        <!-- Task Metadata -->
+                        <div class="alert alert-light border">
+                            <small class="text-muted">
+                                <strong>Created:</strong> <%= new Date(task.createdAt).toLocaleString() %><br>
+                                <strong>Last Updated:</strong> <%= new Date(task.updatedAt).toLocaleString() %>
+                            </small>
+                        </div>
+                        
+                        <!-- Form Actions -->
+                        <div class="d-flex gap-3 mt-4">
+                            <button type="submit" class="btn btn-primary btn-lg px-5">
+                                <i class="fas fa-save me-2"></i>Update Task
+                            </button>
+                            <a href="/tasks" class="btn btn-outline-secondary btn-lg px-4">
+                                <i class="fas fa-times me-2"></i>Cancel
+                            </a>
+                            <a href="/tasks/delete/<%= task._id %>" 
+                               class="btn btn-outline-danger btn-lg px-4 ms-auto"
+                               onclick="return confirmDelete('<%= task.title %>')">
+                                <i class="fas fa-trash me-2"></i>Delete
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('../partials/footer') %>

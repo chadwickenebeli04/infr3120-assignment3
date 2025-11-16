@@ -1,0 +1,95 @@
+<!-- views/index.ejs -->
+<!-- Home/Splash Page -->
+
+<%- include('partials/header') %>
+
+<!-- Hero Section -->
+<div class="hero-section text-white text-center py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <h1 class="display-3 fw-bold mb-4">
+                    <i class="fas fa-tasks me-3"></i>TaskFlow
+                </h1>
+                <p class="lead mb-4 fs-4">
+                    Your Smart Task Management Solution
+                </p>
+                <p class="mb-5 fs-5">
+                    Stay organized, boost productivity, and never miss a deadline. 
+                    Manage all your tasks in one beautiful, easy-to-use interface.
+                </p>
+                <a href="/tasks" class="btn btn-light btn-lg px-5 py-3 shadow-lg">
+                    <i class="fas fa-rocket me-2"></i>Get Started
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Features Section -->
+<div class="container my-5 py-5">
+    <div class="row text-center mb-5">
+        <div class="col">
+            <h2 class="display-5 fw-bold mb-3">Why Choose TaskFlow?</h2>
+            <p class="text-muted fs-5">Everything you need to manage your tasks effectively</p>
+        </div>
+    </div>
+    
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="feature-card card h-100 border-0 shadow-sm hover-lift">
+                <div class="card-body text-center p-4">
+                    <div class="feature-icon mb-4">
+                        <i class="fas fa-plus-circle fa-4x text-success"></i>
+                    </div>
+                    <h4 class="card-title fw-bold mb-3">Create Tasks</h4>
+                    <p class="card-text text-muted">
+                        Quickly add new tasks with titles, descriptions, priorities, and due dates.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="feature-card card h-100 border-0 shadow-sm hover-lift">
+                <div class="card-body text-center p-4">
+                    <div class="feature-icon mb-4">
+                        <i class="fas fa-sort-amount-down fa-4x text-primary"></i>
+                    </div>
+                    <h4 class="card-title fw-bold mb-3">Organize & Prioritize</h4>
+                    <p class="card-text text-muted">
+                        Set priority levels and track task status from "To Do" to "Completed".
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="feature-card card h-100 border-0 shadow-sm hover-lift">
+                <div class="card-body text-center p-4">
+                    <div class="feature-icon mb-4">
+                        <i class="fas fa-check-circle fa-4x text-warning"></i>
+                    </div>
+                    <h4 class="card-title fw-bold mb-3">Track Progress</h4>
+                    <p class="card-text text-muted">
+                        Monitor your tasks, update their status, and stay on top of deadlines.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Call to Action -->
+<div class="container my-5 py-5 text-center">
+    <h2 class="display-5 fw-bold mb-4">Ready to Get Organized?</h2>
+    <p class="lead mb-4 text-muted">Start managing your tasks effectively today!</p>
+    <a href="/tasks/add" class="btn btn-primary btn-lg px-5 py-3 me-3 shadow">
+        <i class="fas fa-plus me-2"></i>Add Your First Task
+    </a>
+    <a href="/tasks" class="btn btn-outline-primary btn-lg px-5 py-3 shadow-sm">
+        <i class="fas fa-list me-2"></i>View All Tasks
+    </a>
+</div>
+
+<%- include('partials/footer') %>
